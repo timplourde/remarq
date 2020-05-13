@@ -21,6 +21,10 @@ namespace Remarq
                 throw new ArgumentException($"Source path {_sourceDirectory} does not exist");
             }
             _sourceDirectory = new DirectoryInfo(sourcePath);
+            if (!destPath.EndsWith(Path.DirectorySeparatorChar))
+            {
+                destPath = destPath + Path.DirectorySeparatorChar;
+            }
             _destDirectory = new DirectoryInfo(destPath);
             _noteConverter = new NoteConverter(templateHtmlFilePath);
         }
