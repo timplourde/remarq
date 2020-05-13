@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Remarq": {
+      "commandName": "Project",
+      "commandLineArgs": "..\\..\\..\\..\\sample\\source output ..\\..\\..\\..\\sample\\template.html"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TITLE}}</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+          integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <style>
+        :root {
+            --primary-color: #fff;
+            --background-color: #e5e5e5;
+            --text-color: #2d2d2d;
+        }
+
+        /* 'light' or 'dark' options */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-color: #455363;
+                --background-color: #1f2935;
+                --text-color: #fff;
+            }
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0 auto;
+            padding: 0 2em;
+            max-width: 1100px;
+            line-height: 1.6em;
+        }
+
+        a,
+        a:hover,
+        a:visited {
+            color: #00A6FB;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+
+        {{BODY}}
+
+    </div>
+
+</body>
+
+</html>
