@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{TITLE}}</title>
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
-          integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+        integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
     <style>
         :root {
             --primary-color: #fff;
@@ -18,8 +18,8 @@
         @media (prefers-color-scheme: dark) {
             :root {
                 --primary-color: #455363;
-                --background-color: #1f2935;
-                --text-color: #fff;
+                --background-color: #161f28;
+                --text-color: #d5cfcf;
             }
         }
 
@@ -28,14 +28,39 @@
             color: var(--text-color);
             margin: 0 auto;
             padding: 0 2em;
-            max-width: 1100px;
+            max-width: 1000px;
             line-height: 1.6em;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        code {
+            white-space: pre-wrap;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            font-family: georgia, times, serif;
         }
 
         a,
         a:hover,
         a:visited {
             color: #00A6FB;
+        }
+
+        blockquote {
+            padding: 0.5rem 1rem;
+            font-style: italic;
+            border-left: 2px solid #00A6FB;
         }
     </style>
 </head>
