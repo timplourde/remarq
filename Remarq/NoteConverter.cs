@@ -1,4 +1,4 @@
-﻿using MarkdownSharp;
+﻿using Markdig;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,8 +28,7 @@ namespace Remarq
 
         public string Convert(string markdown, string fileName)
         {
-            var mdConverter = new Markdown();
-            var htmlBody = mdConverter.Transform(markdown);
+            var htmlBody = Markdown.ToHtml(markdown);
             htmlBody = htmlBody.Replace(".md", ".html");
             return _htmlTemplate.Replace("{{BODY}}", htmlBody).Replace("{{TITLE}}", fileName);
         }

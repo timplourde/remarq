@@ -351,3 +351,6 @@ MigrationBackup/
 
 # custom
 publish/
+
+# vscode 
+.vscode
