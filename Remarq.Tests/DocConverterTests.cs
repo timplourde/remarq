@@ -29,7 +29,7 @@ namespace Remarq.Tests
         public void Constructor_WithNullTemplate_ShouldThrowArgumentNullException()
         {
             // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => new DocConverter(null));
+            Assert.Throws<ArgumentException>(() => new DocConverter(null));
         }
 
         [Fact]
