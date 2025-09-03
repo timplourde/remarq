@@ -7,7 +7,7 @@ namespace Remarq
     {
         static async Task<int> Main(string[] args)
         {
-            if(args.Length < 3)
+            if (args.Length < 3)
             {
                 Console.WriteLine("Usage: sourceDir targetDir htmlTemplate");
                 return 1;
@@ -22,7 +22,7 @@ namespace Remarq
                 Console.WriteLine($"Wrote {result} files from {source} to {target}");
                 return 0;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine($"Error: {e.Message}");
                 return 1;

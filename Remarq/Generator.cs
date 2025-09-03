@@ -47,23 +47,23 @@ namespace Remarq
 
             tasks.AddRange(otherFiles.Select(FileCopyTask));
             tasks.AddRange(markdownFiles.Select(MarkdownFileTask));
-            
+
             return tasks;
         }
 
         private Task MarkdownFileTask(FileInfo sourceFile)
         {
-           return Task.Run(() =>
-           {
-               var markdownSource = File.ReadAllText(sourceFile.FullName);
-               var html = _noteConverter.Convert(markdownSource, sourceFile.Name);
-               var destPath = SourceFileInfoToDestFileInfo(sourceFile, ".html");
-               if (!destPath.Directory.Exists)
-               {
-                   Directory.CreateDirectory(destPath.Directory.FullName);
-               }
-               File.WriteAllText(destPath.FullName, html);
-           });
+            return Task.Run(() =>
+            {
+                var markdownSource = File.ReadAllText(sourceFile.FullName);
+                var html = _noteConverter.Convert(markdownSource, sourceFile.Name);
+                var destPath = SourceFileInfoToDestFileInfo(sourceFile, ".html");
+                if (!destPath.Directory.Exists)
+                {
+                    Directory.CreateDirectory(destPath.Directory.FullName);
+                }
+                File.WriteAllText(destPath.FullName, html);
+            });
         }
 
         private Task FileCopyTask(FileInfo sourceFile)
@@ -90,7 +90,7 @@ namespace Remarq
         private FileInfo SourceFileInfoToDestFileInfo(FileInfo sourceFile, string newExtension)
         {
             var destPath = sourceFile.FullName.Replace(_sourceDirectory.FullName, _destDirectory.FullName);
-            if(newExtension != null)
+            if (newExtension != null)
             {
                 destPath = Path.ChangeExtension(destPath, newExtension);
             }

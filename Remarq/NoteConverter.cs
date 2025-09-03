@@ -21,7 +21,7 @@ namespace Remarq
                 throw new ArgumentException("HTML template is empty");
             }
             _htmlTemplate = template;
-            
+
         }
 
         public string Convert(string markdown, string fileName)
