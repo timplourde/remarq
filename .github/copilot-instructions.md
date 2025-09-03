@@ -108,9 +108,9 @@ dotnet format
    The application automatically converts `.md` links to `.html` links in the generated HTML.
 
 ### No Unit Tests Available
-- The project currently has no unit test framework
-- Manual validation using the sample data is the primary testing method
-- The `sample/source` directory contains representative markdown files for testing
+- The project currently has unit and integration tests in the Remarq.Tests folder
+- The tests cover various aspects of the application, including file processing and markdown conversion
+- The tests use the xUnit library
 
 ## Project Structure and Navigation
 
@@ -118,12 +118,7 @@ dotnet format
 ```
 /
 ├── Remarq/                    # Main project directory
-│   ├── Remarq.csproj         # .NET project file (.NET 8.0, Markdig dependency)
-│   ├── Program.cs            # Entry point and command-line parsing
-│   ├── Generator.cs          # Core file processing logic
-│   ├── NoteConverter.cs      # Markdown to HTML conversion
-│   └── Properties/
-│       └── launchSettings.json # Debug configuration (points to sample data)
+├── Remarq.Tests/             # Test Suite
 ├── sample/                   # Test data and template
 │   ├── source/              # Sample markdown files (journal, recipes, notes)
 │   └── template.html        # HTML template with {{BODY}} and {{TITLE}} placeholders
@@ -132,12 +127,6 @@ dotnet format
 ├── README.md               # Basic usage and build instructions
 └── .gitignore              # Excludes bin/, obj/, publish/, test outputs
 ```
-
-### Important Code Locations
-- **Command-line parsing:** `Remarq/Program.cs` lines 10-17
-- **File processing logic:** `Remarq/Generator.cs` method `Generate()` and `BuildTasks()`
-- **Markdown conversion:** `Remarq/NoteConverter.cs` method `Convert()`
-- **Template substitution:** Uses simple string replacement for `{{BODY}}` and `{{TITLE}}`
 
 ## Common Development Tasks
 

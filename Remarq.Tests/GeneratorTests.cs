@@ -51,6 +51,17 @@ namespace Remarq.Tests
         }
 
         [Fact]
+        public void Constructor_WithNonExistentTemplateFile_ShouldThrowArgumentException()
+        {
+            // Arrange
+            var nonExistentTemplate = Path.Combine(_testDir, "nonexistent-template.html");
+
+            // Act & Assert
+            var exception = Assert.Throws<ArgumentException>(() => new Generator(_sourceDir, _targetDir, nonExistentTemplate));
+            Assert.Contains("does not exist", exception.Message);
+        }
+
+        [Fact]
         public async Task Generate_WithEmptySourceDirectory_ShouldReturn0()
         {
             // Arrange
@@ -84,7 +95,7 @@ namespace Remarq.Tests
             Assert.True(File.Exists(expectedHtmlPath));
             
             var htmlContent = File.ReadAllText(expectedHtmlPath);
-            Assert.Contains("<h1>Test Note</h1>", htmlContent);
+            Assert.Contains("<h1 id=\"test-note\">Test Note</h1>", htmlContent);
             Assert.Contains("<p>This is a test note.</p>", htmlContent);
             Assert.Contains("<title>test.md</title>", htmlContent);
         }
@@ -135,7 +146,7 @@ namespace Remarq.Tests
             Assert.True(File.Exists(expectedHtmlPath));
             
             var htmlContent = File.ReadAllText(expectedHtmlPath);
-            Assert.Contains("<h1>Project Note</h1>", htmlContent);
+            Assert.Contains("<h1 id=\"project-note\">Project Note</h1>", htmlContent);
         }
 
         [Fact]
@@ -168,7 +179,7 @@ namespace Remarq.Tests
             var htmlPath = Path.Combine(_targetDir, "note.html");
             Assert.True(File.Exists(htmlPath));
             var htmlContent = File.ReadAllText(htmlPath);
-            Assert.Contains("<h1>Markdown File</h1>", htmlContent);
+            Assert.Contains("<h1 id=\"markdown-file\">Markdown File</h1>", htmlContent);
 
             // Check text file was copied
             var copiedTxtPath = Path.Combine(_targetDir, "readme.txt");

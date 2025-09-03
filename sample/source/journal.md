@@ -1,3 +1,7 @@
+---
+title: My Personal Journal
+---
+
 # My Journal
 
 **this will be bold**

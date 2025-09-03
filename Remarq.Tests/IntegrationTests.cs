@@ -50,7 +50,10 @@ namespace Remarq.Tests
             Directory.CreateDirectory(recipesDir);
 
             // Create markdown files
-            var journalContent = @"# My Journal
+            var journalContent = @"---
+title: My Personal Journal
+---
+# My Journal
 
 This is my daily journal.
 
@@ -108,24 +111,24 @@ This is a top secret project.
             var journalHtmlPath = Path.Combine(_targetDir, "journal.html");
             Assert.True(File.Exists(journalHtmlPath));
             var journalHtml = File.ReadAllText(journalHtmlPath);
-            Assert.Contains("<h1>My Journal</h1>", journalHtml);
-            Assert.Contains("<h2>Today's Activities</h2>", journalHtml);
+            Assert.Contains("<h1 id=\"my-journal\">My Journal</h1>", journalHtml);
+            Assert.Contains("<title>My Personal Journal</title>", journalHtml);
+            Assert.Contains("<h2 id=\"todays-activities\">Today's Activities</h2>", journalHtml);
             Assert.Contains("recipes/brownies.html", journalHtml); // Links converted
             Assert.DoesNotContain("recipes/brownies.md", journalHtml);
-            Assert.Contains("<title>journal.md</title>", journalHtml);
 
             var browniesHtmlPath = Path.Combine(_targetDir, "recipes", "brownies.html");
             Assert.True(File.Exists(browniesHtmlPath));
             var browniesHtml = File.ReadAllText(browniesHtmlPath);
-            Assert.Contains("<h1>Brownies Recipe</h1>", browniesHtml);
-            Assert.Contains("<h2>Ingredients</h2>", browniesHtml);
+            Assert.Contains("<h1 id=\"brownies-recipe\">Brownies Recipe</h1>", browniesHtml);
+            Assert.Contains("<h2 id=\"ingredients\">Ingredients</h2>", browniesHtml);
             Assert.Contains("<li>2 cups flour</li>", browniesHtml);
             Assert.Contains("../journal.html", browniesHtml); // Relative links converted
 
             var projectHtmlPath = Path.Combine(_targetDir, "notes", "project-alpha.html");
             Assert.True(File.Exists(projectHtmlPath));
             var projectHtml = File.ReadAllText(projectHtmlPath);
-            Assert.Contains("<h1>Project Alpha</h1>", projectHtml);
+            Assert.Contains("<h1 id=\"project-alpha\">Project Alpha</h1>", projectHtml);
             Assert.Contains("3 developers", projectHtml);
 
             // Verify non-markdown files were copied
