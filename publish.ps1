@@ -1,1 +1,1 @@
-dotnet publish Remarq\Remarq.csproj -p:PublishSingleFile=true -r win-x64 -c Release --self-contained true -o publish
+dotnet publish Remarq\Remarq.csproj -p:PublishSingleFile=true -r win-x64 -c Release --self-contained true -o publish -f net8.0

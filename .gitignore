@@ -355,6 +355,9 @@ publish/
 # vscode 
 .vscode
 
+# macos
+.DS_Store
+
 
 # custom
 publish
