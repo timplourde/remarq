@@ -10,21 +10,28 @@ namespace Remarq
     {
         private readonly DirectoryInfo _sourceDirectory;
         private readonly DirectoryInfo _destDirectory;
-        private NoteConverter _noteConverter;
+        private DocConverter _docConverter;
 
         public Generator(string sourcePath, string destPath, string templateHtmlFilePath)
         {
             if (!Directory.Exists(sourcePath))
             {
-                throw new ArgumentException($"Source path {_sourceDirectory} does not exist");
+                throw new ArgumentException($"Source path {sourcePath} does not exist");
             }
+            if (!File.Exists(templateHtmlFilePath))
+            {
+                throw new ArgumentException($"Template file {templateHtmlFilePath} does not exist");
+            }
+
             _sourceDirectory = new DirectoryInfo(sourcePath);
             if (!destPath.EndsWith(Path.DirectorySeparatorChar))
             {
                 destPath = destPath + Path.DirectorySeparatorChar;
             }
             _destDirectory = new DirectoryInfo(destPath);
-            _noteConverter = new NoteConverter(templateHtmlFilePath);
+
+            var templateContent = File.ReadAllText(templateHtmlFilePath);
+            _docConverter = new DocConverter(templateContent);
         }
 
         public async Task<int> Generate()
@@ -56,7 +63,7 @@ namespace Remarq
            return Task.Run(() =>
            {
                var markdownSource = File.ReadAllText(sourceFile.FullName);
-               var html = _noteConverter.Convert(markdownSource, sourceFile.Name);
+               var html = _docConverter.Convert(markdownSource, sourceFile.Name);
                var destPath = SourceFileInfoToDestFileInfo(sourceFile, ".html");
                if (!destPath.Directory.Exists)
                {
