@@ -361,3 +361,7 @@ publish/
 
 # custom
 publish
+
+# Build artifacts
+publish*/
+test_output*/
