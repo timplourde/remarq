@@ -4,7 +4,7 @@ using System.IO;
 
 namespace Remarq
 {
-    internal class NoteConverter
+    public class NoteConverter
     {
         private string _htmlTemplate;
 
