@@ -10,13 +10,9 @@ namespace Remarq
 
         public DocConverter(string template)
         {
-            if (template == null)
-            {
-                throw new ArgumentNullException(nameof(template));
-            }
             if (string.IsNullOrEmpty(template))
             {
-                throw new ArgumentException("Template cannot be empty", nameof(template));
+                throw new ArgumentException("Template cannot be null or empty", nameof(template));
             }
             _template = template;
         }
